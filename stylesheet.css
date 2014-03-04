@@ -22,6 +22,10 @@ body {
   text-align: center;
 }
 
+#brandHeader {
+  padding-top: 5px;
+}
+
 #submitForm {
   width: 100%;
 }
