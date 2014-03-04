@@ -110,105 +110,142 @@ function sign(birthdayMonth, birthdayDay) {
       }
       break;
     case 8:
-    if(birthdayDay < 23) {
-      return "Leo";
-    }
-    else {
-      return "Virgo";
-    }
-    break;
-  case 9:
-    if(birthdayDay < 22) {
-      return "Virgo";
-    }
-    else {
-      return "Libra";
-    }
-    break;
-  case 10:
-    if(birthdayDay < 23) {
-      return "Libra";
-    }
-    else {
-      return "Scorpio";
-    }
-    break;
-  case 11:
-    if(birthdayDay < 22) {
-      return "Scorpio";
-    }
-    else {
-      return "Sagittarius";
-    }
-    break;
-  case 12:
-    if(birthdayDay < 22) {
-      return "Sagittarius";
-    }
-    else {
-      return "Capricorn";
-    }
-    break;
-  default:
-    return "Something went wrong...";
-}
+      if(birthdayDay < 23) {
+        return "Leo";
+      }
+      else {
+        return "Virgo";
+      }
+      break;
+    case 9:
+      if(birthdayDay < 22) {
+        return "Virgo";
+      }
+      else {
+        return "Libra";
+      }
+      break;
+    case 10:
+      if(birthdayDay < 23) {
+        return "Libra";
+      }
+      else {
+        return "Scorpio";
+      }
+      break;
+    case 11:
+      if(birthdayDay < 22) {
+        return "Scorpio";
+      }
+      else {
+        return "Sagittarius";
+      }
+      break;
+    case 12:
+      if(birthdayDay < 22) {
+        return "Sagittarius";
+      }
+      else {
+        return "Capricorn";
+      }
+      break;
+    default:
+      return "Something went wrong...";
+  }
 }
 
 /* validDate(birthdayMonth, birthdayDay) - given a birthday month and day, determine whether or not
 * this is a valid date (i.e. February 31st returns false) */
 function validDate(birthdayMonth, birthdayDay, birthdayYear) {
+
 /* Not allowing negative years at all, giving benefit of the doubt for unreasonable years */ 
-if(birthdayYear < 1) {
-  return false;
-}
-var valid = true;
-/* Only need to switch on the months that do not have 31 days */
-switch(birthdayMonth) {
-  case 1:
-    break;
-  case 2:
-    if(birthdayDay > 29) {
-      valid = false;
+  if(birthdayYear < 1) {
+    return false;
+  }
+
+  /* Special condition to check for leap year baby */
+  if(birthdayMonth == 2 && birthdayDay == 29) {
+    /* Leap years are divisible by 4 but not 100, OR they are divisible by 400 */
+    if((birthdayYear % 4 == 0 && birthdayYear % 100 != 0) || birthdayYear % 400 == 0) {
+      return true;
     }
-    break;
-  case 3:
-    break;
-  case 4:
-    if(birthdayDay > 30) {
-      valid = false;
+    else {
+      return false;
     }
-    break;
-  case 5:
-    break;
-  case 6:
-    if(birthdayDay > 30) {
+  }
+
+  var valid = true;
+
+  /* Switch on valid months, make sure day is within acceptable range */
+  switch(birthdayMonth) {
+    case 1:
+      if(birthdayDay > 31 || birthdayDay < 1) {
+        valid = false;
+      }
+      break;
+    case 2:
+      if(birthdayDay > 29 || birthdayDay < 1) {
+        valid = false;
+      }
+      break;
+    case 3:
+      if(birthdayDay > 31 || birthdayDay < 1) {
+        valid = false;
+      }
+      break;
+    case 4:
+      if(birthdayDay > 30 || birthdayDay < 1) {
+        valid = false;
+      }
+      break;
+    case 5:
+      if(birthdayDay > 31 || birthdayDay < 1) {
+        valid = false;
+      }
+      break;
+    case 6:
+      if(birthdayDay > 30 || birthdayDay < 1) {
+        valid = false;
+      }
+      break;
+    case 7:
+      if(birthdayDay > 31 || birthdayDay < 1) {
+        valid = false;
+      }
+      break;
+    case 8:
+      if(birthdayDay > 31 || birthdayDay < 1) {
+        valid = false;
+      }
+      break;
+    case 9:
+      if(birthdayDay > 30 || birthdayDay < 1) {
+        valid = false;
+      }
+      break;
+    case 10:
+      if(birthdayDay > 31 || birhtdayDay < 1) {
+        valid = false;
+      }
+      break;
+    case 11:
+      if(birthdayDay > 30 || birthdayDay < 1) {
+        valid = false;
+      }
+      break;
+    case 12:
+      if(birthdayDay > 31 || birthdayDay < 1) {
+        valid = false;
+      }
+      break;
+    default:
       valid = false;
-    }
-    break;
-  case 7:
-    break;
-  case 8:
-    break;
-  case 9:
-    if(birthdayDay > 30) {
-      valid = false;
-    }
-    break;
-  case 10:
-    break;
-  case 11:
-    if(birthdayDay > 30) {
-      valid = false;
-    }
-    break;
-  case 12:
-    break;
-  default:
-    valid = false;
-}
-return valid;
+  }
+  return valid;
 }
 
+/* calcAge(birthdayMonth, birthdayDay, birthdayYear) - given someone's DOB, calculate their
+ * current age by comparing it to today using the Date class */
 function calcAge(birthdayMonth, birthdayDay, birthdayYear) {
   var today = new Date();
   var currentDay = today.getDate();
