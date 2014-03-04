@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zodiac</title>
+  <meta name="description" content="Zodiac horoscope website">
+  <meta name="keywords" content="Zodiac,JavaScript,Bootstrap,WebDev">
+  <meta name="author" content="William Neville">
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="zodiac.js"></script>
+  <link href="../twbs/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="stylesheet.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <ul class="nav nav-pills pull-right">
+        <li><a href="../..">Assignments</a></li>
+      </ul>
+      <h3 class="text-muted">Zodiac Fortune Teller</h3>
+    </div><!--./header-->
+    <div class="jumbotron">
+      <h1>Zodiac Horoscopes</h1>
+      <p class="lead">
+        Step right up, and have your fortune told!
+      </p>
+    </div><!--./jumbotron-->
+  </div><!--./container-->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+      </div><!--./col-sm-2-->
+      <div class="col-sm-8">
+        <h3 class="text-muted">Please enter your name and date of birth</h3>
+        <br>
+        <form role="form">
+          <div class="form-group">
+            <label for="nameInput">Name</label>
+            <!--Relevant: http://xkcd.com/327/ -->
+            <input type="text" class="form-control input-lg" id="nameInput" 
+            placeholder="Bobby Tables">
+            <br> 
+            <label for="birthdayMonthInput">Month</label>
+            <select multiple class="form-control multiple" id="birthdayMonthInput">
+              <option>1</option> 
+              <option>2</option> 
+              <option>3</option> 
+              <option>4</option> 
+              <option>5</option> 
+              <option>6</option> 
+              <option>7</option> 
+              <option>8</option> 
+              <option>9</option> 
+              <option>10</option> 
+              <option>11</option> 
+              <option>12</option> 
+            </select>
+            <br>
+            <label for="birthdayDayInput">Day</label>
+            <select multiple class="form-control multiple" id="birthdayDayInput">
+              <option>1</option> 
+              <option>2</option> 
+              <option>3</option> 
+              <option>4</option> 
+              <option>5</option> 
+              <option>6</option> 
+              <option>7</option> 
+              <option>8</option> 
+              <option>9</option> 
+              <option>10</option> 
+              <option>11</option> 
+              <option>12</option> 
+              <option>13</option> 
+              <option>14</option> 
+              <option>15</option> 
+              <option>16</option> 
+              <option>17</option> 
+              <option>18</option> 
+              <option>19</option> 
+              <option>20</option> 
+              <option>21</option> 
+              <option>22</option> 
+              <option>23</option> 
+              <option>24</option> 
+              <option>25</option> 
+              <option>26</option> 
+              <option>27</option> 
+              <option>28</option> 
+              <option>29</option> 
+              <option>30</option> 
+              <option>31</option> 
+            </select>
+            <br>
+            <button type="button" class="btn btn-default btn-lg" 
+              id="submitForm" onClick="horoscope()">
+              Submit
+            </button>
+          </div><!--./form-group-->
+        </form>
+      </div><!--./col-sm-8-->
+      <div class="col-sm-2">
+      </div><!--./col-sm-2-->
+    </div><!--./row-->
+    <div class="row">
+      <div class="col-sm-2">
+      </div><!--./col-sm-2-->
+      <div class="col-sm-8" id="horoscopeDiv">
+        <p>&nbsp;</p> 
+      </div><!--./col-sm-8-->
+      <div class="col-sm-2">
+      </div><!--./col-sm-2-->
+    </div><!--./row-->
+  </div><!--./container-->
+  
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="../twbs/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

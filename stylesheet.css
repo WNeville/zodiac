@@ -1,0 +1,31 @@
+/* stylesheet.css for assignment 3
+ * To be honest, much of this CSS comes from a Twitter Bootstrap template,
+ * and it's all fairly straightforward CSS */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.header {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.header h3 {
+  padding-bottom: 19px;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+#submitForm {
+  width: 100%;
+}
+
+#horoscopeDiv {
+  text-align: center;
+}
