@@ -30,7 +30,7 @@ function horoscope() {
       article = 'a';
     }
     /* Compile results and HTML into a string, write it to horoscopeDiv (see index.html) */
-    s = "<h2>Results for " + userName + "</h2><p>You are " + article + " " + zodiacSign + "!<br>"; 
+    var s = "<h2>Results for " + userName + "</h2><p>You are " + article + " " + zodiacSign + "!<br>"; 
     s += "<img src=\"../../images/zodiac/" + zodiacSign + ".jpg\" width=159px height=160px>"; 
     s += "<br>" + horoscopeArray[Math.floor(Math.random()*8)] + "</p>";
     if(birthdayMonth == 2 && birthdayDay == 29) {
@@ -38,9 +38,10 @@ function horoscope() {
     }
     document.getElementById("horoscopeDiv").innerHTML = s;
   }
-  /* If invalid date, make horoscopeDiv blank again (i.e. clear results) */
+  /* If invalid date, display error message */
   else {
-    document.getElementById("horoscopeDiv").innerHTML = "&nbsp;";
+    var s1 = "<h2 class=\"text-muted\">Invalid Date, please try again.</h2>";
+    document.getElementById("horoscopeDiv").innerHTML = s1; 
   }
 }
 
