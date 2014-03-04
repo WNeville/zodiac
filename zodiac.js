@@ -6,9 +6,10 @@ function horoscope() {
   var userName = formName.nameInput.value;
   var birthdayMonth = parseInt(formName.birthdayMonthInput.value);
   var birthdayDay = parseInt(formName.birthdayDayInput.value);
+  var birthdayYear = parseInt(formName.birthdayYearInput.value);
 
   /* For a bit of efficiency, only continue the program if the date entered is valid */
-  if(validDate(birthdayMonth, birthdayDay)) {
+  if(validDate(birthdayMonth, birthdayDay, birthdayYear)) {
     var horoscopeArray = new Array("Watch out for black cats today.",
                                    "Don't take the L train today.",
                                    "Today is a day to eat lots of pineapples.",
@@ -21,6 +22,7 @@ function horoscope() {
                                   );
     /* Determine what sign they are */
     var zodiacSign = sign(birthdayMonth, birthdayDay);
+    var age = calcAge(birthdayMonth, birthdayDay, birthdayYear);
     var article = "";
     /* Accounting for Aquarius and Aries to make sure we use proper English */ 
     if(zodiacSign.charAt(0) == 'A') {
@@ -30,7 +32,8 @@ function horoscope() {
       article = 'a';
     }
     /* Compile results and HTML into a string, write it to horoscopeDiv (see index.html) */
-    var s = "<h2>Results for " + userName + "</h2><p>You are " + article + " " + zodiacSign + "!<br>"; 
+    var s = "<h2>Results for " + userName + "</h2><p>You are " + age + " years old!<br>";
+    s += "You are " + article + " " + zodiacSign + "!<br>"; 
     s += "<img src=\"../../images/zodiac/" + zodiacSign + ".jpg\" width=159px height=160px>"; 
     s += "<br>" + horoscopeArray[Math.floor(Math.random()*8)] + "</p>";
     if(birthdayMonth == 2 && birthdayDay == 29) {
@@ -40,7 +43,7 @@ function horoscope() {
   }
   /* If invalid date, display error message */
   else {
-    var s1 = "<h2 class=\"text-muted\">Invalid Date, please try again.</h2>";
+    var s1 = "<h2 class=\"text-muted\">Invalid date, please try again.</h2>";
     document.getElementById("horoscopeDiv").innerHTML = s1; 
   }
 }
@@ -107,82 +110,122 @@ function sign(birthdayMonth, birthdayDay) {
       }
       break;
     case 8:
-      if(birthdayDay < 23) {
-        return "Leo";
-      }
-      else {
-        return "Virgo";
-      }
-      break;
-    case 9:
-      if(birthdayDay < 22) {
-        return "Virgo";
-      }
-      else {
-        return "Libra";
-      }
-      break;
-    case 10:
-      if(birthdayDay < 23) {
-        return "Libra";
-      }
-      else {
-        return "Scorpio";
-      }
-      break;
-    case 11:
-      if(birthdayDay < 22) {
-        return "Scorpio";
-      }
-      else {
-        return "Sagittarius";
-      }
-      break;
-    case 12:
-      if(birthdayDay < 22) {
-        return "Sagittarius";
-      }
-      else {
-        return "Capricorn";
-      }
-      break;
-    default:
-      return "Something went wrong...";
-  }
+    if(birthdayDay < 23) {
+      return "Leo";
+    }
+    else {
+      return "Virgo";
+    }
+    break;
+  case 9:
+    if(birthdayDay < 22) {
+      return "Virgo";
+    }
+    else {
+      return "Libra";
+    }
+    break;
+  case 10:
+    if(birthdayDay < 23) {
+      return "Libra";
+    }
+    else {
+      return "Scorpio";
+    }
+    break;
+  case 11:
+    if(birthdayDay < 22) {
+      return "Scorpio";
+    }
+    else {
+      return "Sagittarius";
+    }
+    break;
+  case 12:
+    if(birthdayDay < 22) {
+      return "Sagittarius";
+    }
+    else {
+      return "Capricorn";
+    }
+    break;
+  default:
+    return "Something went wrong...";
+}
 }
 
 /* validDate(birthdayMonth, birthdayDay) - given a birthday month and day, determine whether or not
- * this is a valid date (i.e. February 31st returns false) */
-function validDate(birthdayMonth, birthdayDay) {
-  var valid = true;
-  /* Only need to switch on the months that do not have 31 days */
-  switch(birthdayMonth) {
-    case 2:
-      if(birthdayDay > 29) {
-        valid = false;
-      }
-      break;
-    case 4:
-      if(birthdayDay > 30) {
-        valid = false;
-      }
-      break;
-    case 6:
-      if(birthdayDay > 30) {
-        valid = false;
-      }
-      break;
-    case 9:
-      if(birthdayDay > 30) {
-        valid = false;
-      }
-      break;
-    case 11:
-      if(birthdayDay > 30) {
-        valid = false;
-      }
-      break;
-  }
-  return valid;
+* this is a valid date (i.e. February 31st returns false) */
+function validDate(birthdayMonth, birthdayDay, birthdayYear) {
+/* Not allowing negative years at all, giving benefit of the doubt for unreasonable years */ 
+if(birthdayYear < 1) {
+  return false;
+}
+var valid = true;
+/* Only need to switch on the months that do not have 31 days */
+switch(birthdayMonth) {
+  case 1:
+    break;
+  case 2:
+    if(birthdayDay > 29) {
+      valid = false;
+    }
+    break;
+  case 3:
+    break;
+  case 4:
+    if(birthdayDay > 30) {
+      valid = false;
+    }
+    break;
+  case 5:
+    break;
+  case 6:
+    if(birthdayDay > 30) {
+      valid = false;
+    }
+    break;
+  case 7:
+    break;
+  case 8:
+    break;
+  case 9:
+    if(birthdayDay > 30) {
+      valid = false;
+    }
+    break;
+  case 10:
+    break;
+  case 11:
+    if(birthdayDay > 30) {
+      valid = false;
+    }
+    break;
+  case 12:
+    break;
+  default:
+    valid = false;
+}
+return valid;
 }
 
+function calcAge(birthdayMonth, birthdayDay, birthdayYear) {
+  var today = new Date();
+  var currentDay = today.getDate();
+  var currentMonth = (today.getMonth()) + 1;
+  var currentYear = today.getFullYear();
+  if(currentMonth > birthdayMonth) {
+    return (currentYear - birthdayYear);  
+  }
+  else if(currentMonth == birthdayMonth) {
+    if(currentDay >= birthdayDay) {
+      return (currentYear - birthdayYear); 
+    }
+    else {
+      return (currentYear - birthdayYear) - 1; 
+    }
+  }
+  else {
+    return (currentYear - birthdayYear) - 1;
+  }
+}
