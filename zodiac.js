@@ -48,7 +48,7 @@ function horoscope() {
     }
     /* If invalid date, display error message */
     else {
-      var invalidDateMsg = "<h2 class=\"text-muted\">Invalid date, please try again.</h2>";
+      var invalidDateMsg = "<h2 class=\"text-muted\">Please enter a valid date.</h2>";
       document.getElementById("horoscopeDiv").innerHTML = invalidDateMsg; 
     }
   }
