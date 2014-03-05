@@ -224,7 +224,7 @@ function validDate(birthdayMonth, birthdayDay, birthdayYear) {
       }
       break;
     case 10:
-      if(birthdayDay > 31 || birhtdayDay < 1) {
+      if(birthdayDay > 31 || birthdayDay < 1) {
         valid = false;
       }
       break;
