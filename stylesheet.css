@@ -1,6 +1,5 @@
-/* stylesheet.css for assignment 3
- * To be honest, much of this CSS comes from a Twitter Bootstrap template,
- * and it's all fairly straightforward CSS */
+/* stylesheet.css for assignment 3 */
+
 body {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -23,13 +22,15 @@ body {
 }
 
 #brandHeader {
-  padding-top: 5px;
+  padding-top: 6px;
 }
 
 #submitForm {
   width: 100%;
 }
-
+#zodiacWheel {
+  padding-top: 20px;
+}
 #horoscopeDiv {
   text-align: center;
 }

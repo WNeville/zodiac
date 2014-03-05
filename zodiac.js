@@ -7,44 +7,50 @@ function horoscope() {
   var birthdayMonth = parseInt(formName.birthdayMonthInput.value);
   var birthdayDay = parseInt(formName.birthdayDayInput.value);
   var birthdayYear = parseInt(formName.birthdayYearInput.value);
-
-  /* For a bit of efficiency, only continue the program if the date entered is valid */
-  if(validDate(birthdayMonth, birthdayDay, birthdayYear)) {
-    var horoscopeArray = new Array("Watch out for black cats today.",
-                                   "Don't take the L train today.",
-                                   "Today is a day to eat lots of pineapples.",
-                                   "Be kind to those around you, the debt will be repayed.",
-                                   "Pursue one of your hobbies today, work can wait.",
-                                   "Don't forget to drink your Ovaltine.",
-                                   "When in doubt, wear more deodorant.",
-                                   "Today is a good day to learn JavaScript.",
-                                   "You should consider a career in horoscope writing." 
-                                  );
-    /* Determine what sign they are */
-    var zodiacSign = sign(birthdayMonth, birthdayDay);
-    var age = calcAge(birthdayMonth, birthdayDay, birthdayYear);
-    var article = "";
-    /* Accounting for Aquarius and Aries to make sure we use proper English */ 
-    if(zodiacSign.charAt(0) == 'A') {
-      article = 'an';
-    }
-    else {
-      article = 'a';
-    }
-    /* Compile results and HTML into a string, write it to horoscopeDiv (see index.html) */
-    var s = "<h2>Results for " + userName + "</h2><p>You are " + age + " years old!<br>";
-    s += "You are " + article + " " + zodiacSign + "!<br>"; 
-    s += "<img src=\"../../images/zodiac/" + zodiacSign + ".jpg\" width=159px height=160px>"; 
-    s += "<br>" + horoscopeArray[Math.floor(Math.random()*9)] + "</p>";
-    if(birthdayMonth == 2 && birthdayDay == 29) {
-      s += "<br><p>Congrats on being a leap year baby!</p>";
-    }
-    document.getElementById("horoscopeDiv").innerHTML = s;
+  /* Make sure the user entered a name. Date checking happens as long as there is a name */
+  if(userName == '') {
+    var emptyNameMsg = "<h2 class=\"text-muted\">Please enter your name.</h2>"; 
+    document.getElementById("horoscopeDiv").innerHTML = emptyNameMsg; 
   }
-  /* If invalid date, display error message */
   else {
-    var s1 = "<h2 class=\"text-muted\">Invalid date, please try again.</h2>";
-    document.getElementById("horoscopeDiv").innerHTML = s1; 
+    /* For a bit of efficiency, only continue the program if the date entered is valid */
+    if(validDate(birthdayMonth, birthdayDay, birthdayYear)) {
+      var horoscopeArray = new Array("Watch out for black cats today.",
+                                     "Don't take the L train today.",
+                                     "Today is a day to eat lots of pineapples.",
+                                     "Be kind to those around you, the debt will be repayed.",
+                                     "Pursue one of your hobbies today, work can wait.",
+                                     "Don't forget to drink your Ovaltine.",
+                                     "When in doubt, wear more deodorant.",
+                                     "Today is a good day to learn JavaScript.",
+                                     "You should consider a career in horoscope writing." 
+                                    );
+      /* Determine what sign they are */
+      var zodiacSign = sign(birthdayMonth, birthdayDay);
+      var age = calcAge(birthdayMonth, birthdayDay, birthdayYear);
+      var article = "";
+      /* Accounting for Aquarius and Aries to make sure we use proper English */ 
+      if(zodiacSign.charAt(0) == 'A') {
+        article = 'an';
+      }
+      else {
+        article = 'a';
+      }
+      /* Compile results and HTML into a string, write it to horoscopeDiv (see index.html) */
+      var s = "<h2>Results for " + userName + "</h2><p>You are " + age + " years old!<br>";
+      s += "You are " + article + " " + zodiacSign + "!<br>"; 
+      s += "<img src=\"../../images/zodiac/" + zodiacSign + ".jpg\" width=159px height=160px>"; 
+      s += "<br>" + horoscopeArray[Math.floor(Math.random()*9)] + "</p>";
+      if(birthdayMonth == 2 && birthdayDay == 29) {
+        s += "<br><p>Congrats on being a leap year baby!</p>";
+      }
+      document.getElementById("horoscopeDiv").innerHTML = s;
+    }
+    /* If invalid date, display error message */
+    else {
+      var invalidDateMsg = "<h2 class=\"text-muted\">Invalid date, please try again.</h2>";
+      document.getElementById("horoscopeDiv").innerHTML = invalidDateMsg; 
+    }
   }
 }
 
