@@ -168,10 +168,29 @@ function validDate(birthdayMonth, birthdayDay, birthdayYear) {
   if(isNaN(birthdayMonth) || isNaN(birthdayDay) || isNaN(birthdayYear)) {
     return false;
   }
-  
-  /* Not allowing negative years at all, giving benefit of the doubt for unreasonable years */  
+ 
+  var today = new Date();
+  var currentDay = today.getDate();
+  var currentMonth = today.getMonth();
+  var currentYear = today.getFullYear();
+
+  /* Not allowing negative years at all, nor any dates in the future, 
+   * giving benefit of the doubt for unreasonable ages */  
   if(birthdayYear < 1) {
     return false;
+  }
+  else if(birthdayYear > currentYear) {
+    return false;
+  }
+  else if(birthdayYear == currentYear) {
+    if(birthdayMonth > currentMonth) {
+      return false;
+    }
+    else if(birthdayMonth == currentMonth) {
+      if(birthdayDay > currentDay) {
+        return false;
+      }
+    } 
   }
 
   /* Special condition to check for leap year baby */
