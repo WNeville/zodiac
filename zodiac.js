@@ -164,7 +164,12 @@ function sign(birthdayMonth, birthdayDay) {
 * this is a valid date (i.e. February 31st returns false) */
 function validDate(birthdayMonth, birthdayDay, birthdayYear) {
 
-/* Not allowing negative years at all, giving benefit of the doubt for unreasonable years */ 
+  /* If they left any fields blank, not a valid date */
+  if(isNaN(birthdayMonth) || isNaN(birthdayDay) || isNaN(birthdayYear)) {
+    return false;
+  }
+  
+  /* Not allowing negative years at all, giving benefit of the doubt for unreasonable years */  
   if(birthdayYear < 1) {
     return false;
   }
