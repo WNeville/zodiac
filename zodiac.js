@@ -35,7 +35,7 @@ function horoscope() {
     var s = "<h2>Results for " + userName + "</h2><p>You are " + age + " years old!<br>";
     s += "You are " + article + " " + zodiacSign + "!<br>"; 
     s += "<img src=\"../../images/zodiac/" + zodiacSign + ".jpg\" width=159px height=160px>"; 
-    s += "<br>" + horoscopeArray[Math.floor(Math.random()*8)] + "</p>";
+    s += "<br>" + horoscopeArray[Math.floor(Math.random()*9)] + "</p>";
     if(birthdayMonth == 2 && birthdayDay == 29) {
       s += "<br><p>Congrats on being a leap year baby!</p>";
     }
