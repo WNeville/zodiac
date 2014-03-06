@@ -1,8 +1,10 @@
 /* stylesheet.css for assignment 3 */
 
+/* body - .jumbotron styling is nudging things around, and changing some background colors */
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: #EEEEEE;
 }
 
 .header {
@@ -19,18 +21,21 @@ body {
 
 .jumbotron {
   text-align: center;
+  background-color: #FFFFFF;
 }
 
+/* Styling the upper-left brand text */
 #brandHeader {
   padding-top: 6px;
+  font-style: italic;
 }
 
-#submitForm {
-  width: 100%;
-}
+/* Nudge the zodiac wheel picture down for aesthetics */
 #zodiacWheel {
   padding-top: 20px;
 }
+
+/* Center results under the text boxes */
 #horoscopeDiv {
   text-align: center;
 }

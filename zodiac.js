@@ -1,3 +1,7 @@
+/* Author: William Neville
+ * Date: 03/05/14
+ * Course: CSCI-UA.0061-001 Web Development and Programming */
+
 /* horoscope() - print out to the user their sign, a picture of their sign, and a horoscope chosen
  * at random from an array of 9 horoscopes I have prepared */
 function horoscope() {
